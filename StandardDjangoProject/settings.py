@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIRS = [
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'accounts', 'templates'),
+    os.path.join(BASE_DIR, 'location', 'templates'),
 ]
 
 # Quick-start development settings - unsuitable for production
@@ -42,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'accounts',
+    'location',
+    'material',
+    'order',
+    'supplier',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

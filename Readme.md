@@ -1,7 +1,7 @@
-This is just a basic template for future projects 
-It has the accounts system with a basic template system.
-It uses crispy-forms (please read requirements.txt)
+this project its design to receive order from different locations and one admin get all of them 
+in this application we have basic 3 types of accounts
 
-very basic but good enought for start small projects
+- Admin
+- Employee
+- SuperUser
 
-:)  
