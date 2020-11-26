@@ -1,0 +1,24 @@
+{% extends 'user_area/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Locations View
+{% endblock title %}
+
+{% block content %}
+<div class='container'>
+<h1>Locations</h1>
+
+<a class="btn btn-outline-primary" href="{% url 'locations:create' %}">Create A new location</a>
+    
+<ul class="list-group">
+        {% for items in object_list %}
+            <li class="list-group-item">{{ items }}
+                <a href="{% url 'locations:updateView' items.pk %}" class="btn btn-primary btn-sm">Update</a>
+                <a href="{% url 'locations:deleteView' items.pk %}" class="btn btn-danger btn-sm">delete</a>
+            </li>
+        {% empty %}
+            <li>No articles yet.</li>
+        {% endfor %}
+    </div>
+{% endblock content %}

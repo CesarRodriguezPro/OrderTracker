@@ -1,0 +1,17 @@
+{% extends 'user_area/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create A Location.
+{% endblock title %}
+
+{% block content %}
+<div class='container'>
+    <h1>New Location</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type='submit' class='btn btn-primary' value='Summit'>
+    </form>
+    </div>
+{% endblock content %}
