@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Locations View
+{% endblock title %}
+
+{% block content %}
+<div class='container'>
+<h1>Locations</h1>
+
+<a class="btn btn-outline-primary" href="{% url 'locations:create' %}">Create A new location</a>
+
+<ul class="list-group">
+        {% for items in object_list %}
+            <li class="list-group-item">{
+            {{ items }}
+            </li>
+        {% empty %}
+            <li>No articles yet.</li>
+        {% endfor %}
+    </div>
+{% endblock content %}

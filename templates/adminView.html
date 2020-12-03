@@ -1,0 +1,46 @@
+<form method="post">{% csrf_token %}
+    <input type='submit' class='btn btn-primary' value='Summit'>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Request by</th>
+            <th scope="col">date</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Current Status</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+            {% for item in data%}
+                <tr>
+                    <td>
+                         <input type="hidden" value="{{item}}" name="user.{{item.id}}" >
+                        {{item}}
+                    </td>
+                  <td>
+                      <input type="hidden" value="{{item.date_created}}" name="date.{{item.id}}">
+                        {{item.date_created}}
+                    </td>
+                     <td>
+                        {{item.name}}
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="quantity.{{item.id}}" value ={{item.quantity}}>
+                    </td>
+                     <td>
+                           <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect1" name="status.{{item.id}}">
+                                  <option>Requested</option>
+                                  <option>complete</option>
+                                  <option>Cancel</option>
+                                </select>
+                              </div>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
