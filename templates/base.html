@@ -16,7 +16,7 @@
    <div class=container-flu>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Internation Concrete</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,21 +26,35 @@
         {% if user.is_authenticated %}
               <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' %}"> {{user.username}}</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'user_area' %}">User Area</a></li>
+                {% if user.groups.all.0.name == 'Admin' %}
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Admin Tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'accounts:signup' %}">New Employees</a>
+                      <a class="dropdown-item" href="{% url 'material:listView' %}">Materials</a>
+                      <a class="dropdown-item" href="{% url 'location:listView' %}">Locations</a>
+                      <a class="dropdown-item" href="{% url 'supplier:listView' %}">Suppliers</a>
+                    </div>
+                  </li>
+                {% endif %}
+
               <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a></li>
+
         {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login'%}">Log In</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>
         {% endif %}
     </ul>
   </div>
 </nav>
       <div class="container">
       {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-{{message.tags}}">
-            {{ message }}
-          </div>
-        {% endfor %}
+            {% for message in messages %}
+                  <div class="alert alert-{{message.tags}}">
+                        {{ message }}
+                  </div>
+            {% endfor %}
       {% endif %}
       
       {% block content %}

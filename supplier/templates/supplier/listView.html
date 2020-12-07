@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Locations View
+{% endblock title %}
+
+{% block content %}
+<div class='container'>
+<h1>Suppliers</h1>
+
+<a class="btn btn-outline-primary" href="{% url 'supplier:create' %}">Create A new Supplier</a>
+
+<ul class="list-group">
+        {% for items in object_list %}
+            <li class="list-group-item">
+                {{ items }}
+                <div class="btn-group float-right" role="group" aria-label="Basic example">
+                    <a href="{% url 'supplier:detailView' items.pk %}" class="btn btn-primary ">detail</a>
+                    <a href="{% url 'supplier:updateView' items.pk %}" class="btn btn-warning ">Update</a>
+                    <a href="{% url 'supplier:deleteView' items.pk %}" class="btn btn-danger ">delete</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No articles yet.</li>
+        {% endfor %}
+    </div>
+{% endblock content %}

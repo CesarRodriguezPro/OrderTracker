@@ -18,6 +18,9 @@ TEMPLATES_DIRS = [
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'accounts', 'templates'),
     os.path.join(BASE_DIR, 'location', 'templates'),
+    os.path.join(BASE_DIR, 'order', 'templates'),
+    os.path.join(BASE_DIR, 'material', 'templates'),
+    os.path.join(BASE_DIR, 'supplier', 'templates'),
 ]
 
 # Quick-start development settings - unsuitable for production

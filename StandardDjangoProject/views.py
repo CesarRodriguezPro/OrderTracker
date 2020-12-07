@@ -3,9 +3,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from material.models import Material
 from order.models import Receive
-from accounts.models import User
 from django.shortcuts import redirect
-from django.contrib.messages import success
+from django.contrib.messages import success, error
 
 
 def employee(request):
@@ -36,11 +35,12 @@ def admin(request):
 
 @login_required()
 def user_area(request):
-    if request.user.groups.filter(name='Employee').exists():
-        return employee(request)
-    elif request.user.groups.filter(name='Admin').exists():
+    if request.user.groups.filter(name='Admin').exists():
         return admin(request)
+    else:
+        error(request, 'Please contact your administrator')
+        return employee(request)
 
 
-class Home(TemplateView):
-    template_name = "index.html"
+def home(request):
+    return redirect('accounts:login')

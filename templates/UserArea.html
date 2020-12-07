@@ -8,14 +8,12 @@
 
 {% block content %}
 
-    {% if user.groups.all.0.name == 'Employee' %}
-        <h2>employee area</h2>
-        {% include 'EmployeeView.html' with items=items %}
-    {% endif %}
-
     {% if user.groups.all.0.name == 'Admin' %}
         <h2>Admin Area</h2>
         {% include 'adminView.html' with items=items %}
+    {% else %}
+        <h2>employee area</h2>
+        {% include 'EmployeeView.html' with items=items %}
     {% endif %}
 
 {% endblock content %}

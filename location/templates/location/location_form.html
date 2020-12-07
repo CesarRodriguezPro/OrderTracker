@@ -1,8 +1,8 @@
-{% extends 'user_area/base.html' %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Delete
+    Create A Location.
 {% endblock title %}
 
 {% block content %}
@@ -10,8 +10,8 @@
     <h1>New Location</h1>
     <form method="post">
         {% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm">
+        {{ form|crispy }}
+        <input type='submit' class='btn btn-primary' value='Summit'>
     </form>
     </div>
 {% endblock content %}

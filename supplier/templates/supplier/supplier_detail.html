@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Detail View
+{% endblock title %}
+
+{% block content %}
+
+<h2>{{ object.name }}</h2>
+<p>Created on: {{object.date_created}}</p>
+<p>Telephone: {{ object.telephone }}</p>
+<p>Address: {{ object.address }}</p>
+<p>Email: {{ object.emails }}</p>
+<p> Materials:</p>
+<ul>
+    {% for item in materials %}
+    <li>
+        {{item}}
+    </li>
+    {% endfor %}
+</ul>
+
+
+
+
+{% endblock content %}

@@ -1,4 +1,4 @@
-{% extends 'user_area/base.html' %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}
@@ -13,9 +13,12 @@
     
 <ul class="list-group">
         {% for items in object_list %}
-            <li class="list-group-item">{{ items }}
-                <a href="{% url 'locations:updateView' items.pk %}" class="btn btn-primary btn-sm">Update</a>
-                <a href="{% url 'locations:deleteView' items.pk %}" class="btn btn-danger btn-sm">delete</a>
+            <li class="list-group-item">
+                {{ items }}
+                <div class="btn-group float-right" role="group" aria-label="Basic example">
+                    <a href="{% url 'locations:updateView' items.pk %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'locations:deleteView' items.pk %}" class="btn btn-danger">delete</a>
+                </div>
             </li>
         {% empty %}
             <li>No articles yet.</li>
